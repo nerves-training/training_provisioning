@@ -47,9 +47,9 @@ defmodule Starter.MixProject do
       {:nerves_key, "~> 0.1", targets: @all_targets},
       {:scenic, "~> 0.9"},
       {:scenic_driver_nerves_rpi, "~> 0.9", targets: @all_targets},
-      {:scenic_driver_gpio, "~> 0.1", targets: @all_targets},
       {:ssd1306, github: "nerves-training/ssd1306", targets: @all_targets},
       {:rpi_fb_capture, "~> 0.1", targets: @all_targets},
+      {:circuits_gpio, "~> 0.3", targets: @all_targets},
 
       # Dependencies for specific targets
       {:nerves_system_rpi0, "~> 1.6", runtime: false, targets: :rpi0},

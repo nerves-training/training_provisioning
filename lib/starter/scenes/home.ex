@@ -20,6 +20,10 @@ defmodule Starter.Scene.Home do
 
   defp serial_number() do
     {:ok, i2c} = ATECC508A.Transport.I2C.init([])
-    NervesKey.manufacturer_sn(i2c)
+    if NervesKey.provisioned?(i2c) do
+      NervesKey.manufacturer_sn(i2c)
+    else
+      "unprovisioned"
+    end
   end
 end
