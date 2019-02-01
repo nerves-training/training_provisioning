@@ -6,12 +6,12 @@ defmodule Starter.Scene.Home do
   import Scenic.Primitives
 
   def init(_, _) do
-    Starter.PressStart2P.load()
+    ScenicFontPressStart2p.load()
 
     sn = serial_number()
 
     graph =
-      Graph.build(font: Starter.PressStart2P.hash(), font_size: 8)
+      Graph.build(font: ScenicFontPressStart2p.hash(), font_size: 8)
       |> text(sn, fill: :white, translate: {0, 20})
 
     push_graph(graph)

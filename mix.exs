@@ -48,6 +48,7 @@ defmodule Starter.MixProject do
       {:scenic, "~> 0.9"},
       {:scenic_driver_nerves_rpi, "~> 0.9", targets: @all_targets},
       {:ssd1306, github: "nerves-training/ssd1306", targets: @all_targets},
+      {:scenic_font_press_start_2p, github: "nerves-training/scenic_font_press_start_2p", targets: @all_targets},
       {:rpi_fb_capture, "~> 0.1", targets: @all_targets},
       {:circuits_gpio, "~> 0.3", targets: @all_targets},
 

@@ -36,6 +36,7 @@
   "scenic": {:hex, :scenic, "0.9.0", "129594f918b4e2dd97465b95b4fb3582294ac6bb3e931f12edd09913743964eb", [:make, :mix], [{:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm"},
   "scenic_driver_gpio": {:hex, :scenic_driver_gpio, "0.1.0", "0a480c5da9d94368571566d424fd1a9139ef28f6914d09e83a69d37e02ab1e6d", [:mix], [{:circuits_gpio, "~> 0.1", [hex: :circuits_gpio, repo: "hexpm", optional: false]}, {:scenic, "~> 0.9", [hex: :scenic, repo: "hexpm", optional: false]}], "hexpm"},
   "scenic_driver_nerves_rpi": {:hex, :scenic_driver_nerves_rpi, "0.9.3", "f43e7d1dfc2eeccb708e268041ff11f232d67b2993d34332b83f6dd4adb27e93", [:make, :mix], [{:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}, {:scenic, "~> 0.9", [hex: :scenic, repo: "hexpm", optional: false]}], "hexpm"},
+  "scenic_font_press_start_2p": {:git, "https://github.com/nerves-training/scenic_font_press_start_2p.git", "5c5ec010b692128fbc69caaaccb6a58963ae7b00", []},
   "shoehorn": {:hex, :shoehorn, "0.4.0", "f3830e22e1c58b502e8c436623804c4eb6ed15f5d0bdbacdeb448cddf4795951", [:mix], [{:distillery, "~> 2.0", [hex: :distillery, repo: "hexpm", optional: false]}], "hexpm"},
   "socket": {:hex, :socket, "0.3.13", "98a2ab20ce17f95fb512c5cadddba32b57273e0d2dba2d2e5f976c5969d0c632", [:mix], [], "hexpm"},
   "ssd1306": {:git, "https://github.com/nerves-training/ssd1306.git", "edf514dbe739075e5d912d366de2266e72015523", []},
