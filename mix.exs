@@ -10,7 +10,7 @@ defmodule Starter.MixProject do
       elixir: "~> 1.8",
       archives: [nerves_bootstrap: "~> 1.4"],
       start_permanent: Mix.env() == :prod,
-      build_embedded: Mix.target() != :host,
+      build_embedded: true,
       aliases: [loadconfig: [&bootstrap/1]],
       deps: deps()
     ]
@@ -51,7 +51,7 @@ defmodule Starter.MixProject do
       {:scenic_font_press_start_2p,
        github: "nerves-training/scenic_font_press_start_2p", targets: @all_targets},
       {:rpi_fb_capture, "~> 0.1", targets: @all_targets},
-      {:circuits_gpio, "~> 0.3", targets: @all_targets},
+      {:circuits_gpio, "~> 0.4", targets: @all_targets},
 
       # Dependencies for specific targets
       {:nerves_system_rpi0, "~> 1.6", runtime: false, targets: :rpi0},
