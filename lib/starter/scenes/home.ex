@@ -8,27 +8,36 @@ defmodule Starter.Scene.Home do
   def init(_, _) do
     ScenicFontPressStart2p.load()
 
-    sn = serial_number()
-
     graph =
       Graph.build(font: ScenicFontPressStart2p.hash(), font_size: 8)
-      |> text(sn, fill: :white, translate: {0, 20})
+      |> text(message(), fill: :white, translate: {0, 20})
 
     push_graph(graph)
     {:ok, graph}
   end
 
-  defp serial_number() do
+  defp message() do
     {:ok, i2c} = ATECC508A.Transport.I2C.init([])
-
     if NervesKey.detected?(i2c) do
-      if NervesKey.provisioned?(i2c) do
-        NervesKey.manufacturer_sn(i2c)
+      "#{serial_number(i2c)}\n#{aux_key(i2c)}"
+    else
+      "No ATECC508A"
+    end
+
+  end
+  defp serial_number(transport) do
+      if NervesKey.provisioned?(transport) do
+        NervesKey.manufacturer_sn(transport)
       else
         "Unprovisioned"
       end
+  end
+
+  defp aux_key(transport) do
+    if NervesKey.has_aux_certificates?(transport) do
+      "Has aux cert"
     else
-      "No ATECC508A"
+      "No aux cert"
     end
   end
 end
