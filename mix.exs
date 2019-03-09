@@ -45,13 +45,16 @@ defmodule Starter.MixProject do
       {:nerves_init_gadget, "~> 0.4", targets: @all_targets},
       {:nerves_time, "~> 0.1", targets: @all_targets},
       {:nerves_key, "~> 0.1", targets: @all_targets},
-      {:scenic, "~> 0.9"},
-      {:scenic_driver_nerves_rpi, "~> 0.9", targets: @all_targets},
+      {:scenic, "~> 0.9", github: "boydm/scenic", branch: "master", override: true},
+      {:scenic_driver_oled_bonnet,
+       github: "nerves-training/scenic_driver_oled_bonnet", targets: @all_targets},
       {:ssd1306, github: "nerves-training/ssd1306", targets: @all_targets},
       {:scenic_font_press_start_2p,
        github: "nerves-training/scenic_font_press_start_2p", targets: @all_targets},
-      {:rpi_fb_capture, "~> 0.1", targets: @all_targets},
+
+      # Dependencies for first hands-on segment of training
       {:circuits_gpio, "~> 0.4", targets: @all_targets},
+      {:circuits_i2c, "~> 0.3", targets: @all_targets},
 
       # Dependencies for specific targets
       {:nerves_system_rpi0, "~> 1.6", runtime: false, targets: :rpi0},

@@ -53,7 +53,7 @@ config :starter, :viewport, %{
   default_scene: {Starter.Scene.Home, nil},
   drivers: [
     %{
-      module: Scenic.Driver.Nerves.Rpi
+      module: ScenicDriverOLEDBonnet
     }
   ]
 }
