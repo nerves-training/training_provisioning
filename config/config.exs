@@ -10,6 +10,9 @@ use Mix.Config
 
 config :nerves, :firmware, rootfs_overlay: "rootfs_overlay"
 
+# Turn off System Registry to improve boot time
+config :nerves_runtime, :kernel, use_system_registry: false
+
 # Use shoehorn to start the main application. See the shoehorn
 # docs for separating out critical OTP applications such as those
 # involved with firmware updates.
