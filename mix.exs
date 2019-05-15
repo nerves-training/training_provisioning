@@ -45,7 +45,7 @@ defmodule Starter.MixProject do
       {:nerves_init_gadget, "~> 0.4", targets: @all_targets},
       {:nerves_time, "~> 0.1", targets: @all_targets},
       {:nerves_key, "~> 0.1", targets: @all_targets},
-      {:scenic, "~> 0.9.0", targets: @all_targets},
+      {:scenic, "~> 0.10.0", targets: @all_targets},
       {:scenic_driver_oled_bonnet,
        github: "nerves-training/scenic_driver_oled_bonnet", targets: @all_targets},
       {:ssd1306, github: "nerves-training/ssd1306", targets: @all_targets},

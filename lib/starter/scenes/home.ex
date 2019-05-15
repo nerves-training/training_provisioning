@@ -6,35 +6,39 @@ defmodule Starter.Scene.Home do
 
   import Scenic.Primitives
 
-  def init(_, _) do
+  def init(_, _opts) do
     ScenicFontPressStart2p.load()
 
     {:ok, i2c} = ATECC508A.Transport.I2C.init([])
-    build_and_push_graph(i2c)
 
-    {:ok, i2c}
+    graph =
+      Graph.build(font: ScenicFontPressStart2p.hash(), font_size: 8)
+      |> text(message(i2c), id: :message, fill: :white, translate: {0, 20})
+
+    state = %{i2c: i2c, graph: graph}
+
+    {:ok, state, push: graph}
   end
 
-  def handle_input({:key, {"S", :press, 0}}, _context, i2c) do
+  def handle_input({:key, {"S", :press, 0}}, _context, %{i2c: i2c, graph: graph} = state) do
     if NervesKey.detected?(i2c) do
       Logger.debug("Clearing out the aux certificates")
       NervesKey.clear_aux_certificates(i2c)
-      build_and_push_graph(i2c)
+
+      new_graph =
+        graph
+        |> Graph.modify(:message, &text(&1, message(i2c)))
+
+      new_state = %{state | graph: new_graph}
+
+      {:noreply, new_state, push: new_graph}
+    else
+      {:noreply, state}
     end
-
-    {:noreply, i2c}
   end
 
-  def handle_input(_other, _context, i2c) do
-    {:noreply, i2c}
-  end
-
-  defp build_and_push_graph(i2c) do
-    graph =
-      Graph.build(font: ScenicFontPressStart2p.hash(), font_size: 8)
-      |> text(message(i2c), fill: :white, translate: {0, 20})
-
-    push_graph(graph)
+  def handle_input(_other, _context, state) do
+    {:noreply, state}
   end
 
   defp message(i2c) do
