@@ -1,18 +1,22 @@
 defmodule Starter.MixProject do
   use Mix.Project
 
+  @app :starter
+  @version "0.1.0"
   @all_targets [:rpi0, :rpi3a]
 
   def project do
     [
-      app: :starter,
-      version: "0.1.0",
-      elixir: "~> 1.8",
-      archives: [nerves_bootstrap: "~> 1.4"],
+      app: @app,
+      version: @version,
+      elixir: "~> 1.9",
+      archives: [nerves_bootstrap: "~> 1.6"],
       start_permanent: Mix.env() == :prod,
       build_embedded: true,
       aliases: [loadconfig: [&bootstrap/1]],
-      deps: deps()
+      deps: deps(),
+      releases: [{@app, release()}],
+      preferred_cli_target: [run: :host, test: :host]
     ]
   end
 
@@ -35,8 +39,8 @@ defmodule Starter.MixProject do
   defp deps do
     [
       # Dependencies for all targets
-      {:nerves, "~> 1.4", runtime: false},
-      {:shoehorn, "~> 0.4"},
+      {:nerves, "~> 1.5.0", runtime: false},
+      {:shoehorn, "~> 0.6"},
       {:ring_logger, "~> 0.6"},
       {:toolshed, "~> 0.2"},
 
@@ -57,8 +61,18 @@ defmodule Starter.MixProject do
       {:circuits_i2c, "~> 0.3", targets: @all_targets},
 
       # Dependencies for specific targets
-      {:nerves_system_rpi0, "~> 1.6", runtime: false, targets: :rpi0},
-      {:nerves_system_rpi3a, "~> 1.6", runtime: false, targets: :rpi3a}
+      {:nerves_system_rpi0, "~> 1.8", runtime: false, targets: :rpi0},
+      {:nerves_system_rpi3a, "~> 1.8", runtime: false, targets: :rpi3a}
+    ]
+  end
+
+  def release do
+    [
+      overwrite: true,
+      cookie: "#{@app}_cookie",
+      include_erts: &Nerves.Release.erts/0,
+      steps: [&Nerves.Release.init/1, :assemble],
+      strip_beams: Mix.env() == :prod
     ]
   end
 end
