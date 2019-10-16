@@ -47,9 +47,13 @@ defmodule Starter.MixProject do
       {:dialyxir, "~> 1.0.0-rc.6", only: [:dev, :test], runtime: false},
 
       # Dependencies for all targets except :host
-      {:nerves_runtime, "~> 0.6", targets: @all_targets},
-      {:nerves_init_gadget, "~> 0.4", targets: @all_targets},
-      {:nerves_time, "~> 0.1", targets: @all_targets},
+      {:nerves_runtime, "~> 0.10", targets: @all_targets},
+      {:busybox, "~> 0.1", targets: @all_targets},
+      {:vintage_net, "~> 0.6.0", targets: @all_targets},
+      {:vintage_net_wizard, "~> 0.1.3", targets: @all_targets},
+      {:nerves_firmware_ssh, "~> 0.2", targets: @all_targets},
+      {:nerves_time, "~> 0.3", targets: @all_targets},
+      {:mdns_lite, "~> 0.4", targets: @all_targets},
       {:nerves_key, "~> 0.1", targets: @all_targets},
       {:scenic, "~> 0.10.0", targets: @all_targets},
       {:scenic_driver_oled_bonnet,

@@ -37,6 +37,11 @@ defmodule Starter.Scene.Home do
     end
   end
 
+  def handle_input({:key, {" ", :press, 0}}, _context, state) do
+    _ = VintageNetWizard.run_wizard()
+    {:noreply, state}
+  end
+
   def handle_input(_other, _context, state) do
     {:noreply, state}
   end
