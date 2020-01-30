@@ -32,7 +32,7 @@ defmodule TrainingProvisioning.MixProject do
   def application do
     [
       mod: {TrainingProvisioning.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :httpc]
     ]
   end
 
