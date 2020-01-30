@@ -31,12 +31,7 @@ defmodule TrainingProvisioning.Application do
   end
 
   def children(_target) do
-    main_viewport_config = Application.get_env(:training_provisioning, :viewport)
-
-    [
-      TrainingProvisioning.OLED,
-      {Scenic, viewports: [main_viewport_config]}
-    ]
+    []
   end
 
   def target() do
