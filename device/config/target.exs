@@ -62,16 +62,18 @@ config :mdns_lite,
     }
   ]
 
-config :training_provisioning, :viewport, %{
+config :provisioning_ui, :viewport, %{
   name: :main_viewport,
   size: {128, 64},
-  default_scene: {TrainingProvisioning.Scene.Home, nil},
+  default_scene: {ProvisioningUI.Scene.Home, nil},
   drivers: [
     %{
       module: ScenicDriverOLEDBonnet
     }
   ]
 }
+
+config :provisioning_ui, low_level: TrainingProvisioning.LowLevel
 
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

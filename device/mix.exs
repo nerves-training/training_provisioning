@@ -32,13 +32,15 @@ defmodule TrainingProvisioning.MixProject do
   def application do
     [
       mod: {TrainingProvisioning.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :inets]
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:provisioning_ui, path: "../provisioning_ui"},
+
       # Dependencies for all targets
       {:nerves, "~> 1.5.0", runtime: false},
       {:shoehorn, "~> 0.6"},
@@ -53,13 +55,10 @@ defmodule TrainingProvisioning.MixProject do
       {:nerves_firmware_ssh, "~> 0.2", targets: @all_targets},
       {:nerves_time, "~> 0.3", targets: @all_targets},
       {:mdns_lite, "~> 0.4", targets: @all_targets},
-      {:nerves_key, "~> 0.1", targets: @all_targets},
-      {:scenic, "~> 0.10.0", targets: @all_targets},
+      {:nerves_key, "~> 0.3", targets: @all_targets},
       {:scenic_driver_oled_bonnet,
-       github: "nerves-training/scenic_driver_oled_bonnet", targets: @all_targets},
-      {:ssd1306, github: "nerves-training/ssd1306", targets: @all_targets},
-      {:scenic_font_press_start_2p,
-       github: "nerves-training/scenic_font_press_start_2p", targets: @all_targets},
+        github: "nerves-training/scenic_driver_oled_bonnet",
+        targets: @all_targets},
 
       # Dependencies for first hands-on segment of training
       {:circuits_gpio, "~> 0.4", targets: @all_targets},
