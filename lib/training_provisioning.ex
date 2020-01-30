@@ -1,4 +1,4 @@
-defmodule Starter do
+defmodule TrainingProvisioning do
   @moduledoc """
   Base app for NervesTeam training
   """

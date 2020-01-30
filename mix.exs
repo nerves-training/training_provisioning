@@ -1,7 +1,7 @@
-defmodule Starter.MixProject do
+defmodule TrainingProvisioning.MixProject do
   use Mix.Project
 
-  @app :starter
+  @app :training_provisioning
   @version "0.1.0"
   @all_targets [:rpi0, :rpi3a]
 
@@ -10,7 +10,7 @@ defmodule Starter.MixProject do
       app: @app,
       version: @version,
       elixir: "~> 1.9",
-      archives: [nerves_bootstrap: "~> 1.6"],
+      archives: [nerves_bootstrap: "~> 1.7"],
       start_permanent: Mix.env() == :prod,
       build_embedded: true,
       aliases: [loadconfig: [&bootstrap/1]],
@@ -31,7 +31,7 @@ defmodule Starter.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      mod: {Starter.Application, []},
+      mod: {TrainingProvisioning.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -47,10 +47,9 @@ defmodule Starter.MixProject do
       {:dialyxir, "~> 1.0.0-rc.6", only: [:dev, :test], runtime: false},
 
       # Dependencies for all targets except :host
-      {:nerves_runtime, "~> 0.10", targets: @all_targets},
-      {:busybox, "~> 0.1", targets: @all_targets},
-      {:vintage_net, "~> 0.6.0", targets: @all_targets},
-      {:vintage_net_wizard, "~> 0.1.3", targets: @all_targets},
+      {:nerves_runtime, "~> 0.6", targets: @all_targets},
+      {:nerves_pack, "~> 0.2", targets: @all_targets},
+      {:vintage_net_wizard, "~> 0.1", targets: @all_targets},
       {:nerves_firmware_ssh, "~> 0.2", targets: @all_targets},
       {:nerves_time, "~> 0.3", targets: @all_targets},
       {:mdns_lite, "~> 0.4", targets: @all_targets},
@@ -67,8 +66,8 @@ defmodule Starter.MixProject do
       {:circuits_i2c, "~> 0.3", targets: @all_targets},
 
       # Dependencies for specific targets
-      {:nerves_system_rpi0, "~> 1.8", runtime: false, targets: :rpi0},
-      {:nerves_system_rpi3a, "~> 1.8", runtime: false, targets: :rpi3a}
+      {:nerves_system_rpi0, "~> 1.10", runtime: false, targets: :rpi0},
+      {:nerves_system_rpi3a, "~> 1.10", runtime: false, targets: :rpi3a}
     ]
   end
 

@@ -1,4 +1,4 @@
-defmodule Starter.Scene.Home do
+defmodule TrainingProvisioning.Scene.Home do
   use Scenic.Scene
   require Logger
 
@@ -22,7 +22,7 @@ defmodule Starter.Scene.Home do
 
   def handle_input({:key, {"S", :press, 0}}, _context, %{i2c: i2c, graph: graph} = state) do
     if NervesKey.detected?(i2c) do
-      Logger.debug("Clearing out the aux certificates")
+      _ = Logger.debug("Clearing out the aux certificates")
       NervesKey.clear_aux_certificates(i2c)
 
       new_graph =
@@ -66,7 +66,7 @@ defmodule Starter.Scene.Home do
     if NervesKey.has_aux_certificates?(transport) do
       "Has aux cert\n\nPress the #6\nbutton to clear"
     else
-      "No aux cert"
+      "No aux cert\n\nPress joystick\nfor WiFi wizard"
     end
   end
 end

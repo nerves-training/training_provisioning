@@ -1,4 +1,4 @@
-defmodule Starter.OLED do
+defmodule TrainingProvisioning.OLED do
   use GenServer
 
   def start_link(args \\ []) do
